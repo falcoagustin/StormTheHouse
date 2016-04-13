@@ -3,6 +3,7 @@ package gameObjects;
 import flixel.FlxG;
 import flixel.FlxSprite;
 import flixel.system.FlxAssets.FlxGraphicAsset;
+import openfl.Assets;
 
 /**
  * ...
@@ -22,6 +23,7 @@ class Player extends FlxSprite
 		maxVelocity.set(400, 400);
 		drag.set(500, 500);
 		gun = aGun;
+		loadGraphic(Assets.getBitmapData("img/hitman.png"),false,49,43);
 		
 	}
 	

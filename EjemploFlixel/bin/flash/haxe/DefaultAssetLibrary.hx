@@ -57,6 +57,8 @@ class DefaultAssetLibrary extends AssetLibrary {
 		openfl.text.Font.registerFont (__ASSET__OPENFL__flixel_fonts_monsterrat_ttf);
 		
 		
+		
+		
 		#end
 		
 		#if flash
@@ -71,6 +73,10 @@ class DefaultAssetLibrary extends AssetLibrary {
 		type.set ("flixel/fonts/monsterrat.ttf", AssetType.FONT);
 		className.set ("flixel/images/ui/button.png", __ASSET__flixel_images_ui_button_png);
 		type.set ("flixel/images/ui/button.png", AssetType.IMAGE);
+		className.set ("img/hitman.png", __ASSET__img_hitman_png);
+		type.set ("img/hitman.png", AssetType.IMAGE);
+		className.set ("img/jason.png", __ASSET__img_jason_png);
+		type.set ("img/jason.png", AssetType.IMAGE);
 		
 		
 		#elseif html5
@@ -93,6 +99,14 @@ class DefaultAssetLibrary extends AssetLibrary {
 		
 		type.set (id, AssetType.FONT);
 		id = "flixel/images/ui/button.png";
+		path.set (id, id);
+		
+		type.set (id, AssetType.IMAGE);
+		id = "img/hitman.png";
+		path.set (id, id);
+		
+		type.set (id, AssetType.IMAGE);
+		id = "img/jason.png";
 		path.set (id, id);
 		
 		type.set (id, AssetType.IMAGE);
@@ -128,6 +142,12 @@ class DefaultAssetLibrary extends AssetLibrary {
 		
 		className.set ("flixel/images/ui/button.png", __ASSET__flixel_images_ui_button_png);
 		type.set ("flixel/images/ui/button.png", AssetType.IMAGE);
+		
+		className.set ("img/hitman.png", __ASSET__img_hitman_png);
+		type.set ("img/hitman.png", AssetType.IMAGE);
+		
+		className.set ("img/jason.png", __ASSET__img_jason_png);
+		type.set ("img/jason.png", AssetType.IMAGE);
 		
 		
 		if (useManifest) {
@@ -778,6 +798,8 @@ class DefaultAssetLibrary extends AssetLibrary {
 @:keep @:bind #if display private #end class __ASSET__flixel_fonts_nokiafc22_ttf extends flash.text.Font { }
 @:keep @:bind #if display private #end class __ASSET__flixel_fonts_monsterrat_ttf extends flash.text.Font { }
 @:keep @:bind #if display private #end class __ASSET__flixel_images_ui_button_png extends flash.display.BitmapData { public function new () { super (0, 0, true, 0); } }
+@:keep @:bind #if display private #end class __ASSET__img_hitman_png extends flash.display.BitmapData { public function new () { super (0, 0, true, 0); } }
+@:keep @:bind #if display private #end class __ASSET__img_jason_png extends flash.display.BitmapData { public function new () { super (0, 0, true, 0); } }
 
 
 #elseif html5
@@ -786,6 +808,8 @@ class DefaultAssetLibrary extends AssetLibrary {
 
 @:keep #if display private #end class __ASSET__flixel_fonts_nokiafc22_ttf extends lime.text.Font { public function new () { super (); name = "Nokia Cellphone FC Small"; } } 
 @:keep #if display private #end class __ASSET__flixel_fonts_monsterrat_ttf extends lime.text.Font { public function new () { super (); name = "Monsterrat"; } } 
+
+
 
 
 
@@ -801,6 +825,8 @@ class DefaultAssetLibrary extends AssetLibrary {
 @:font("C:/HaxeToolkit/haxe/lib/flixel/4,0,1/assets/fonts/nokiafc22.ttf") #if display private #end class __ASSET__flixel_fonts_nokiafc22_ttf extends lime.text.Font {}
 @:font("C:/HaxeToolkit/haxe/lib/flixel/4,0,1/assets/fonts/monsterrat.ttf") #if display private #end class __ASSET__flixel_fonts_monsterrat_ttf extends lime.text.Font {}
 @:image("C:/HaxeToolkit/haxe/lib/flixel/4,0,1/assets/images/ui/button.png") #if display private #end class __ASSET__flixel_images_ui_button_png extends lime.graphics.Image {}
+@:image("assets/img/hitman.png") #if display private #end class __ASSET__img_hitman_png extends lime.graphics.Image {}
+@:image("assets/img/jason.png") #if display private #end class __ASSET__img_jason_png extends lime.graphics.Image {}
 
 
 

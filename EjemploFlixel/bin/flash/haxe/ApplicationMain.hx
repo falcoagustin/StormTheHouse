@@ -50,6 +50,14 @@ class ApplicationMain {
 		types.push (lime.Assets.AssetType.IMAGE);
 		
 		
+		urls.push ("img/hitman.png");
+		types.push (lime.Assets.AssetType.IMAGE);
+		
+		
+		urls.push ("img/jason.png");
+		types.push (lime.Assets.AssetType.IMAGE);
+		
+		
 		
 		if (config.assetsPrefix != null) {
 			
@@ -111,7 +119,7 @@ class ApplicationMain {
 		
 		config = {
 			
-			build: "34",
+			build: "88",
 			company: "MateoCarranza",
 			file: "EjemploFlixel",
 			fps: 60,

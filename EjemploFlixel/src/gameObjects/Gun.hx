@@ -17,7 +17,7 @@ class Gun
 	
 	public function shoot(X:Float, Y:Float):Void{
 		var bullet:Bullet =cast  bullets.recycle(Bullet);
-		bullet.reset(X, Y);
+		bullet.reset(X+47, Y+30);
 	}
 	
 }
