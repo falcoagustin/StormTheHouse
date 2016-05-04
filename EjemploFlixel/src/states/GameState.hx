@@ -1,24 +1,25 @@
-package states;
+/*package states;
 
 import flixel.FlxG;
 import flixel.FlxState;
 import flixel.group.FlxGroup;
+import flixel.tile.FlxTilemap;
 import gameObjects.Bullet;
 import gameObjects.Gun;
 import gameObjects.Jason;
 import gameObjects.Player;
 import gameObjects.Wall;
+import openfl.Assets;
+import AssetPaths;
 
-/**
- * ...
- * @author MateoCarranza
- */
+
 class GameState extends FlxState
 {
 	var player:Player;
 	var walls:FlxGroup;
 	var bullets:FlxGroup;
 	var jason :Jason;
+	var map:FlxTilemap;
 	
 	
 	public function new() 
@@ -28,6 +29,11 @@ class GameState extends FlxState
 	
 	override function create():Void
 	{
+		
+		map = new FlxTilemap();
+		map.loadMapFromCSV(Assets.getText(AssetPaths.BasicMap__csv), Assets.getBitmapData(AssetPaths.tiles__png), 32, 32);
+		add(map);
+		
 		bullets = new FlxGroup();
 		add(bullets);
 		var gun :Gun = new Gun(bullets);
@@ -72,3 +78,41 @@ class GameState extends FlxState
 	}
 	
 }
+*/
+
+package states;
+import flixel.FlxCamera;
+import flixel.FlxG;
+import flixel.FlxObject;
+import flixel.FlxState;
+import flixel.tile.FlxTilemap;
+import openfl.Assets;
+
+class GameState extends FlxState
+{
+
+	var mMap:FlxTilemap;
+
+	public function new() 
+	{
+		super();
+		
+		
+	}
+	override public function create():Void 
+	{
+		mMap = new FlxTilemap();
+		mMap.loadMapFromCSV(Assets.getText("img/BasicMap.csv"), Assets.getBitmapData("img/tilesheet_complete.png"), 64, 64,null,0,0);
+		add(mMap);
+		
+	}
+	override public function update(aDelta:Float):Void 
+	{
+		super.update(aDelta);
+
+	}
+	
+	
+	
+}
+

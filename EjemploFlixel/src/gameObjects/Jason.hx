@@ -27,7 +27,7 @@ class Jason extends FlxSprite
 		animation.add("up", [2]);
 		//false es para no loopear la img, 7 es el frame rate
 		animation.add("death", [4, 5, 6, 7, 7, 7, 7, 7], 3, false); 
-		animation.add("revive", [7,6,5,4], 3,false); 
+		animation.add("revive", [4,5,6,7,7,7,7,7,6,5,4], 3,false); 
 		//donde comienza la animacion
 		animation.play("down");
 		
@@ -35,12 +35,18 @@ class Jason extends FlxSprite
 	
 	override public function update(elapsed:Float):Void
 	{
-		if (animation.curAnim.name == "death"){
+		if (animation.curAnim.name == "revive"){
+			
 			super.update(elapsed);
+			velocity.set(0, 0);
+			allowCollisions = FlxObject.NONE;
 			return;
 		}
 		
+		
 		super.update(elapsed);
+		
+		allowCollisions = FlxObject.ANY;
 		var player = GlobalGameData.player;
 		var deltaX:Float = player.x - x;
 		var deltaY:Float = player.y - y;
@@ -52,8 +58,10 @@ class Jason extends FlxSprite
 		deltaX /= length;
 		deltaY /= length;
 		
+		speed = 100;
 		velocity.x = deltaX * speed;
 		velocity.y = deltaY * speed;
+		
 		if (Math.abs(velocity.x) > Math.abs(velocity.y))
 		{
 			if (velocity.x > 0)
@@ -78,9 +86,10 @@ class Jason extends FlxSprite
 	
 	public function damage(float:Float) 
 	{
-		animation.play("death");
-		velocity.set(0, 0);
+		animation.play("revive");
+		//velocity.set(0, 0);
 		allowCollisions = FlxObject.NONE;
+		
 
 	}
 	

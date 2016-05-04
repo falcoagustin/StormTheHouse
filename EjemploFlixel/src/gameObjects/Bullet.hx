@@ -1,5 +1,6 @@
 package gameObjects;
 
+import flixel.FlxG;
 import flixel.FlxSprite;
 import flixel.system.FlxAssets.FlxGraphicAsset;
 import flixel.util.FlxColor;
@@ -21,7 +22,20 @@ class Bullet extends FlxSprite
 	override function reset(X:Float, Y:Float):Void
 	{
 		super.reset(X, Y);
-		velocity.x = 1000;
+		//velocity.x = 1000;
+		var deltaX:Float = FlxG.mouse.x - x;
+		var deltaY:Float = FlxG.mouse.y - y;
+		
+		var length:Float = Math.sqrt(deltaX * deltaX + deltaY * deltaY);
+		
+		if (length == 0){
+			length = 0.0001;
+		}
+		deltaX /= length;
+		deltaY /= length;
+		
+		velocity.x = deltaX * 1000;
+		velocity.y = deltaY * 1000;
 		
 	}
 }

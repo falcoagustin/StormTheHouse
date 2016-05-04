@@ -50,27 +50,39 @@ class ApplicationMain {
 		types.push (lime.Assets.AssetType.IMAGE);
 		
 		
-		urls.push ("img/BasicMap.csv");
+		urls.push ("assets/BasicMap.csv");
 		types.push (lime.Assets.AssetType.TEXT);
 		
 		
-		urls.push ("img/hitman.png");
+		urls.push ("assets/dust.png");
 		types.push (lime.Assets.AssetType.IMAGE);
 		
 		
-		urls.push ("img/jason.png");
+		urls.push ("assets/explosion.png");
 		types.push (lime.Assets.AssetType.IMAGE);
 		
 		
-		urls.push ("img/mapCSV_map2_tiles.csv");
+		urls.push ("assets/hero.png");
+		types.push (lime.Assets.AssetType.IMAGE);
+		
+		
+		urls.push ("assets/mapCSV_map2_specials.csv");
 		types.push (lime.Assets.AssetType.TEXT);
 		
 		
-		urls.push ("img/tiles.png");
+		urls.push ("assets/mapCSV_map2_tiles.csv");
+		types.push (lime.Assets.AssetType.TEXT);
+		
+		
+		urls.push ("assets/openfl.svg");
+		types.push (lime.Assets.AssetType.TEXT);
+		
+		
+		urls.push ("assets/tiles.png");
 		types.push (lime.Assets.AssetType.IMAGE);
 		
 		
-		urls.push ("img/tilesheet_complete.png");
+		urls.push ("assets/tilesheet_complete.png");
 		types.push (lime.Assets.AssetType.IMAGE);
 		
 		
@@ -135,13 +147,13 @@ class ApplicationMain {
 		
 		config = {
 			
-			build: "161",
-			company: "MateoCarranza",
-			file: "EjemploFlixel",
+			build: "76",
+			company: "Joaquin",
+			file: "chivitoBoy",
 			fps: 60,
-			name: "EjemploFlixel",
+			name: "chivitoBoy",
 			orientation: "",
-			packageName: "EjemploFlixel",
+			packageName: "chivitoBoy",
 			version: "1.0.0",
 			windows: [
 				
@@ -153,11 +165,11 @@ class ApplicationMain {
 					display: 0,
 					fullscreen: false,
 					hardware: true,
-					height: 480,
+					height: 600,
 					parameters: "{}",
 					resizable: true,
 					stencilBuffer: true,
-					title: "EjemploFlixel",
+					title: "chivitoBoy",
 					vsync: false,
 					width: 800,
 					x: null,
@@ -177,7 +189,7 @@ class ApplicationMain {
 		
 		#if (js && html5)
 		#if (munit || utest)
-		openfl.Lib.embed (null, 800, 480, "000000");
+		openfl.Lib.embed (null, 800, 600, "000000");
 		#end
 		#else
 		create ();

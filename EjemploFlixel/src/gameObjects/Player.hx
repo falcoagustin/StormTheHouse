@@ -4,6 +4,7 @@ import flixel.FlxG;
 import flixel.FlxSprite;
 import flixel.system.FlxAssets.FlxGraphicAsset;
 import openfl.Assets;
+import openfl.events.MouseEvent;
 
 /**
  * ...
@@ -12,8 +13,8 @@ import openfl.Assets;
 class Player extends FlxSprite
 {
 	static private inline var ACCELERATION:Float = 1000;
-	
 	var gun:Gun;
+	
 	
 
 	public function new(?X:Float=0, ?Y:Float=0, aGun:Gun) 
@@ -30,23 +31,34 @@ class Player extends FlxSprite
 	override function update(elapsed:Float):Void
 	{
 		acceleration.set();
-		if (FlxG.keys.pressed.LEFT){
+		if (FlxG.keys.pressed.A){
 			acceleration.x -= ACCELERATION;
 		}
-		if (FlxG.keys.pressed.RIGHT){
+		if (FlxG.keys.pressed.D){
 			acceleration.x += ACCELERATION;
 		}
-		if (FlxG.keys.pressed.DOWN){
+		if (FlxG.keys.pressed.S){
 			acceleration.y += ACCELERATION;
 		}
-		if (FlxG.keys.pressed.UP){
+		if (FlxG.keys.pressed.W){
 			acceleration.y -= ACCELERATION;
 		}
-		if (FlxG.keys.justPressed.SPACE){
+		if (FlxG.mouse.get_justPressed()){
 			gun.shoot(x, y);
 		}
 		
+		
+		var Xdistance:Float = FlxG.game.mouseX - this.x;
+		var Ydistance:Float = FlxG.game.mouseY - this.y;
+		this.angle = Math.atan2(Ydistance, Xdistance) * 180 / Math.PI;
+		
 		super.update(elapsed);
 	}
+	
+	public function mouseProcess(mouse:MouseEvent) : Void
+{
+    
+	
+}
 
 }
