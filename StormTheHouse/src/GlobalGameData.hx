@@ -13,7 +13,6 @@ class GlobalGameData
 	private static var mirko:Mirko;
 	private static var score:Int;
 	
-	
 	private static function get_instance() : GlobalGameData
 	{
 		if (instance == null)

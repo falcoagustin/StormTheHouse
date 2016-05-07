@@ -25,6 +25,7 @@ class GameState extends FlxState
 	var enemies:FlxGroup;
 	var score:Int;
 	var scoreLabel:FlxText;
+	var hpLabel:FlxText;
 	var time:Float;
 	var gameOver:FlxText;
 	var restartButton:FlxButton;
@@ -68,8 +69,10 @@ class GameState extends FlxState
 		
 		score = 0;
 		scoreLabel = new FlxText(FlxG.camera.x + 20, FlxG.camera.y + 20, 130, "Score: 0", 12);
-		add(scoreLabel);
+		hpLabel = new FlxText(FlxG.camera.x + 35, FlxG.camera.y + 35, 130, "HP: 3", 12);
 		
+		add(scoreLabel);
+		add(hpLabel);
 		time = 0;
 		
 		FlxG.camera.follow(mirko, FlxCameraFollowStyle.TOPDOWN);
@@ -101,6 +104,9 @@ class GameState extends FlxState
 		scoreLabel.x = mirko.x;
 		scoreLabel.y = mirko.y - 30;
 		scoreLabel.text = "Score: " + cast score;
+		hpLabel.x = mirko.x;
+		hpLabel.y = mirko.y - 50;
+		hpLabel.text = "HP: " + cast mirko.get_HP();
 	}
 	
 	private function wallsVsBullets(walls:FlxTilemap,aBullet:Bullet):Void
@@ -116,19 +122,23 @@ class GameState extends FlxState
 		
 	}
 	
-	private function bulletVsMirko(aBullet:Bullet,aMirko:Mirko):Void
+	private function bulletVsMirko(aBullet:Bullet, aMirko:Mirko):Void
 	{
-		gameOver = new FlxText(mirko.x, mirko.y, 500, "GameOver", 20);
-		add(gameOver);
-		restartButton = new FlxButton(mirko.x, mirko.y + 30, "Restart", restartGame);
-		add(restartButton);
-		aBullet.kill();
-		aMirko.kill();
 		
+		aBullet.kill();
+		if (aMirko.get_HP() > 0)
+		{
+			aMirko.removeHP(1);
+		}else
+		{
+			aMirko.kill();
+			gameOver = new FlxText(mirko.x, mirko.y, 500, "GameOver", 20);
+			add(gameOver);
+			restartGame();
+		}
 	}
 	
 	private function restartGame():Void{
-		enemies.clear();
 		bullets.clear();
 		enemyBullets.clear();
 		mirko.revive();
@@ -136,8 +146,11 @@ class GameState extends FlxState
 		mirko.y = 100;
 		score = 0;
 		gameOver.kill();
-		restartButton.kill();
-		
+		for (i in enemies){
+			i.destroy();
+		}
+		enemies.kill();
+
 	}
 	
 }

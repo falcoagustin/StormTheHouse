@@ -57,6 +57,19 @@ class DefaultAssetLibrary extends AssetLibrary {
 		openfl.text.Font.registerFont (__ASSET__OPENFL__flixel_fonts_monsterrat_ttf);
 		
 		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
 		#end
 		
 		#if flash
@@ -71,6 +84,32 @@ class DefaultAssetLibrary extends AssetLibrary {
 		type.set ("flixel/fonts/monsterrat.ttf", AssetType.FONT);
 		className.set ("flixel/images/ui/button.png", __ASSET__flixel_images_ui_button_png);
 		type.set ("flixel/images/ui/button.png", AssetType.IMAGE);
+		className.set ("img/manOld_gun.png", __ASSET__img_manold_gun_png);
+		type.set ("img/manOld_gun.png", AssetType.IMAGE);
+		className.set ("img/manOld_silencer.png", __ASSET__img_manold_silencer_png);
+		type.set ("img/manOld_silencer.png", AssetType.IMAGE);
+		className.set ("img/spritesheet_characters.png", __ASSET__img_spritesheet_characters_png);
+		type.set ("img/spritesheet_characters.png", AssetType.IMAGE);
+		className.set ("img/survivor1_gun.png", __ASSET__img_survivor1_gun_png);
+		type.set ("img/survivor1_gun.png", AssetType.IMAGE);
+		className.set ("img/tilesheet_complete.png", __ASSET__img_tilesheet_complete_png);
+		type.set ("img/tilesheet_complete.png", AssetType.IMAGE);
+		className.set ("map/BasicMap.csv", __ASSET__map_basicmap_csv);
+		type.set ("map/BasicMap.csv", AssetType.TEXT);
+		className.set ("map/BasicMap_Background.csv", __ASSET__map_basicmap_background_csv);
+		type.set ("map/BasicMap_Background.csv", AssetType.TEXT);
+		className.set ("map/BasicMap_Walls.csv", __ASSET__map_basicmap_walls_csv);
+		type.set ("map/BasicMap_Walls.csv", AssetType.TEXT);
+		className.set ("map/BigMap_Background.csv", __ASSET__map_bigmap_background_csv);
+		type.set ("map/BigMap_Background.csv", AssetType.TEXT);
+		className.set ("map/BigMap_Floor.csv", __ASSET__map_bigmap_floor_csv);
+		type.set ("map/BigMap_Floor.csv", AssetType.TEXT);
+		className.set ("map/BigMap_Objects.csv", __ASSET__map_bigmap_objects_csv);
+		type.set ("map/BigMap_Objects.csv", AssetType.TEXT);
+		className.set ("map/BigMap_Small Objects.csv", __ASSET__map_bigmap_small_objects_csv);
+		type.set ("map/BigMap_Small Objects.csv", AssetType.TEXT);
+		className.set ("map/BigMap_Walls.csv", __ASSET__map_bigmap_walls_csv);
+		type.set ("map/BigMap_Walls.csv", AssetType.TEXT);
 		
 		
 		#elseif html5
@@ -96,6 +135,58 @@ class DefaultAssetLibrary extends AssetLibrary {
 		path.set (id, id);
 		
 		type.set (id, AssetType.IMAGE);
+		id = "img/manOld_gun.png";
+		path.set (id, id);
+		
+		type.set (id, AssetType.IMAGE);
+		id = "img/manOld_silencer.png";
+		path.set (id, id);
+		
+		type.set (id, AssetType.IMAGE);
+		id = "img/spritesheet_characters.png";
+		path.set (id, id);
+		
+		type.set (id, AssetType.IMAGE);
+		id = "img/survivor1_gun.png";
+		path.set (id, id);
+		
+		type.set (id, AssetType.IMAGE);
+		id = "img/tilesheet_complete.png";
+		path.set (id, id);
+		
+		type.set (id, AssetType.IMAGE);
+		id = "map/BasicMap.csv";
+		path.set (id, id);
+		
+		type.set (id, AssetType.TEXT);
+		id = "map/BasicMap_Background.csv";
+		path.set (id, id);
+		
+		type.set (id, AssetType.TEXT);
+		id = "map/BasicMap_Walls.csv";
+		path.set (id, id);
+		
+		type.set (id, AssetType.TEXT);
+		id = "map/BigMap_Background.csv";
+		path.set (id, id);
+		
+		type.set (id, AssetType.TEXT);
+		id = "map/BigMap_Floor.csv";
+		path.set (id, id);
+		
+		type.set (id, AssetType.TEXT);
+		id = "map/BigMap_Objects.csv";
+		path.set (id, id);
+		
+		type.set (id, AssetType.TEXT);
+		id = "map/BigMap_Small Objects.csv";
+		path.set (id, id);
+		
+		type.set (id, AssetType.TEXT);
+		id = "map/BigMap_Walls.csv";
+		path.set (id, id);
+		
+		type.set (id, AssetType.TEXT);
 		
 		
 		var assetsPrefix = null;
@@ -128,6 +219,45 @@ class DefaultAssetLibrary extends AssetLibrary {
 		
 		className.set ("flixel/images/ui/button.png", __ASSET__flixel_images_ui_button_png);
 		type.set ("flixel/images/ui/button.png", AssetType.IMAGE);
+		
+		className.set ("img/manOld_gun.png", __ASSET__img_manold_gun_png);
+		type.set ("img/manOld_gun.png", AssetType.IMAGE);
+		
+		className.set ("img/manOld_silencer.png", __ASSET__img_manold_silencer_png);
+		type.set ("img/manOld_silencer.png", AssetType.IMAGE);
+		
+		className.set ("img/spritesheet_characters.png", __ASSET__img_spritesheet_characters_png);
+		type.set ("img/spritesheet_characters.png", AssetType.IMAGE);
+		
+		className.set ("img/survivor1_gun.png", __ASSET__img_survivor1_gun_png);
+		type.set ("img/survivor1_gun.png", AssetType.IMAGE);
+		
+		className.set ("img/tilesheet_complete.png", __ASSET__img_tilesheet_complete_png);
+		type.set ("img/tilesheet_complete.png", AssetType.IMAGE);
+		
+		className.set ("map/BasicMap.csv", __ASSET__map_basicmap_csv);
+		type.set ("map/BasicMap.csv", AssetType.TEXT);
+		
+		className.set ("map/BasicMap_Background.csv", __ASSET__map_basicmap_background_csv);
+		type.set ("map/BasicMap_Background.csv", AssetType.TEXT);
+		
+		className.set ("map/BasicMap_Walls.csv", __ASSET__map_basicmap_walls_csv);
+		type.set ("map/BasicMap_Walls.csv", AssetType.TEXT);
+		
+		className.set ("map/BigMap_Background.csv", __ASSET__map_bigmap_background_csv);
+		type.set ("map/BigMap_Background.csv", AssetType.TEXT);
+		
+		className.set ("map/BigMap_Floor.csv", __ASSET__map_bigmap_floor_csv);
+		type.set ("map/BigMap_Floor.csv", AssetType.TEXT);
+		
+		className.set ("map/BigMap_Objects.csv", __ASSET__map_bigmap_objects_csv);
+		type.set ("map/BigMap_Objects.csv", AssetType.TEXT);
+		
+		className.set ("map/BigMap_Small Objects.csv", __ASSET__map_bigmap_small_objects_csv);
+		type.set ("map/BigMap_Small Objects.csv", AssetType.TEXT);
+		
+		className.set ("map/BigMap_Walls.csv", __ASSET__map_bigmap_walls_csv);
+		type.set ("map/BigMap_Walls.csv", AssetType.TEXT);
 		
 		
 		if (useManifest) {
@@ -778,6 +908,19 @@ class DefaultAssetLibrary extends AssetLibrary {
 @:keep @:bind #if display private #end class __ASSET__flixel_fonts_nokiafc22_ttf extends null { }
 @:keep @:bind #if display private #end class __ASSET__flixel_fonts_monsterrat_ttf extends null { }
 @:keep @:bind #if display private #end class __ASSET__flixel_images_ui_button_png extends flash.display.BitmapData { public function new () { super (0, 0, true, 0); } }
+@:keep @:bind #if display private #end class __ASSET__img_manold_gun_png extends flash.display.BitmapData { public function new () { super (0, 0, true, 0); } }
+@:keep @:bind #if display private #end class __ASSET__img_manold_silencer_png extends flash.display.BitmapData { public function new () { super (0, 0, true, 0); } }
+@:keep @:bind #if display private #end class __ASSET__img_spritesheet_characters_png extends flash.display.BitmapData { public function new () { super (0, 0, true, 0); } }
+@:keep @:bind #if display private #end class __ASSET__img_survivor1_gun_png extends flash.display.BitmapData { public function new () { super (0, 0, true, 0); } }
+@:keep @:bind #if display private #end class __ASSET__img_tilesheet_complete_png extends flash.display.BitmapData { public function new () { super (0, 0, true, 0); } }
+@:keep @:bind #if display private #end class __ASSET__map_basicmap_csv extends null { }
+@:keep @:bind #if display private #end class __ASSET__map_basicmap_background_csv extends null { }
+@:keep @:bind #if display private #end class __ASSET__map_basicmap_walls_csv extends null { }
+@:keep @:bind #if display private #end class __ASSET__map_bigmap_background_csv extends null { }
+@:keep @:bind #if display private #end class __ASSET__map_bigmap_floor_csv extends null { }
+@:keep @:bind #if display private #end class __ASSET__map_bigmap_objects_csv extends null { }
+@:keep @:bind #if display private #end class __ASSET__map_bigmap_small_objects_csv extends null { }
+@:keep @:bind #if display private #end class __ASSET__map_bigmap_walls_csv extends null { }
 
 
 #elseif html5
@@ -786,6 +929,19 @@ class DefaultAssetLibrary extends AssetLibrary {
 
 @:keep #if display private #end class __ASSET__flixel_fonts_nokiafc22_ttf extends lime.text.Font { public function new () { super (); name = "Nokia Cellphone FC Small"; } } 
 @:keep #if display private #end class __ASSET__flixel_fonts_monsterrat_ttf extends lime.text.Font { public function new () { super (); name = "Monsterrat"; } } 
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -801,6 +957,19 @@ class DefaultAssetLibrary extends AssetLibrary {
 @:font("C:/HaxeToolkit/haxe/lib/flixel/4,0,1/assets/fonts/nokiafc22.ttf") #if display private #end class __ASSET__flixel_fonts_nokiafc22_ttf extends lime.text.Font {}
 @:font("C:/HaxeToolkit/haxe/lib/flixel/4,0,1/assets/fonts/monsterrat.ttf") #if display private #end class __ASSET__flixel_fonts_monsterrat_ttf extends lime.text.Font {}
 @:image("C:/HaxeToolkit/haxe/lib/flixel/4,0,1/assets/images/ui/button.png") #if display private #end class __ASSET__flixel_images_ui_button_png extends lime.graphics.Image {}
+@:image("assets/img/manOld_gun.png") #if display private #end class __ASSET__img_manold_gun_png extends lime.graphics.Image {}
+@:image("assets/img/manOld_silencer.png") #if display private #end class __ASSET__img_manold_silencer_png extends lime.graphics.Image {}
+@:image("assets/img/spritesheet_characters.png") #if display private #end class __ASSET__img_spritesheet_characters_png extends lime.graphics.Image {}
+@:image("assets/img/survivor1_gun.png") #if display private #end class __ASSET__img_survivor1_gun_png extends lime.graphics.Image {}
+@:image("assets/img/tilesheet_complete.png") #if display private #end class __ASSET__img_tilesheet_complete_png extends lime.graphics.Image {}
+@:file("assets/maps/BasicMap.csv") #if display private #end class __ASSET__map_basicmap_csv extends lime.utils.Bytes {}
+@:file("assets/maps/BasicMap_Background.csv") #if display private #end class __ASSET__map_basicmap_background_csv extends lime.utils.Bytes {}
+@:file("assets/maps/BasicMap_Walls.csv") #if display private #end class __ASSET__map_basicmap_walls_csv extends lime.utils.Bytes {}
+@:file("assets/maps/BigMap_Background.csv") #if display private #end class __ASSET__map_bigmap_background_csv extends lime.utils.Bytes {}
+@:file("assets/maps/BigMap_Floor.csv") #if display private #end class __ASSET__map_bigmap_floor_csv extends lime.utils.Bytes {}
+@:file("assets/maps/BigMap_Objects.csv") #if display private #end class __ASSET__map_bigmap_objects_csv extends lime.utils.Bytes {}
+@:file("assets/maps/BigMap_Small Objects.csv") #if display private #end class __ASSET__map_bigmap_small_objects_csv extends lime.utils.Bytes {}
+@:file("assets/maps/BigMap_Walls.csv") #if display private #end class __ASSET__map_bigmap_walls_csv extends lime.utils.Bytes {}
 
 
 

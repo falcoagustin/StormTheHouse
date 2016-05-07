@@ -50,6 +50,58 @@ class ApplicationMain {
 		types.push (lime.Assets.AssetType.IMAGE);
 		
 		
+		urls.push ("img/manOld_gun.png");
+		types.push (lime.Assets.AssetType.IMAGE);
+		
+		
+		urls.push ("img/manOld_silencer.png");
+		types.push (lime.Assets.AssetType.IMAGE);
+		
+		
+		urls.push ("img/spritesheet_characters.png");
+		types.push (lime.Assets.AssetType.IMAGE);
+		
+		
+		urls.push ("img/survivor1_gun.png");
+		types.push (lime.Assets.AssetType.IMAGE);
+		
+		
+		urls.push ("img/tilesheet_complete.png");
+		types.push (lime.Assets.AssetType.IMAGE);
+		
+		
+		urls.push ("map/BasicMap.csv");
+		types.push (lime.Assets.AssetType.TEXT);
+		
+		
+		urls.push ("map/BasicMap_Background.csv");
+		types.push (lime.Assets.AssetType.TEXT);
+		
+		
+		urls.push ("map/BasicMap_Walls.csv");
+		types.push (lime.Assets.AssetType.TEXT);
+		
+		
+		urls.push ("map/BigMap_Background.csv");
+		types.push (lime.Assets.AssetType.TEXT);
+		
+		
+		urls.push ("map/BigMap_Floor.csv");
+		types.push (lime.Assets.AssetType.TEXT);
+		
+		
+		urls.push ("map/BigMap_Objects.csv");
+		types.push (lime.Assets.AssetType.TEXT);
+		
+		
+		urls.push ("map/BigMap_Small Objects.csv");
+		types.push (lime.Assets.AssetType.TEXT);
+		
+		
+		urls.push ("map/BigMap_Walls.csv");
+		types.push (lime.Assets.AssetType.TEXT);
+		
+		
 		
 		if (config.assetsPrefix != null) {
 			
@@ -111,7 +163,7 @@ class ApplicationMain {
 		
 		config = {
 			
-			build: "1",
+			build: "231",
 			company: "MateoCarranza",
 			file: "StormTheHouse",
 			fps: 60,
@@ -129,13 +181,13 @@ class ApplicationMain {
 					display: 0,
 					fullscreen: false,
 					hardware: false,
-					height: 480,
+					height: 720,
 					parameters: "{}",
 					resizable: true,
 					stencilBuffer: true,
 					title: "StormTheHouse",
 					vsync: false,
-					width: 800,
+					width: 1280,
 					x: null,
 					y: null
 				},
@@ -153,7 +205,7 @@ class ApplicationMain {
 		
 		#if (js && html5)
 		#if (munit || utest)
-		openfl.Lib.embed (null, 800, 480, "000000");
+		openfl.Lib.embed (null, 1280, 720, "000000");
 		#end
 		#else
 		create ();

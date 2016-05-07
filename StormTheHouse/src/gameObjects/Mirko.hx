@@ -16,7 +16,7 @@ class Mirko extends FlxSprite
 	static private inline var SPEED:Float = 500;
 	var gun:Gun;
 
-
+	var hp:Int;
 
 	public function new(?X:Float=0, ?Y:Float=0, aGun:Gun) 
 	{
@@ -25,7 +25,8 @@ class Mirko extends FlxSprite
 		maxVelocity.set(400, 400);
 		drag.set(500, 500);
 		gun = aGun;
-		loadGraphic(Assets.getBitmapData("img/manOld_gun.png"),true,49,43);
+		loadGraphic(Assets.getBitmapData("img/manOld_gun.png"), true, 49, 43);
+		hp = 3;
 
 	}
 
@@ -55,6 +56,16 @@ class Mirko extends FlxSprite
 		this.angle = Math.atan2(Ydistance, Xdistance) * 180 / Math.PI;
 
 		super.update(elapsed);
+	}
+	
+	public function removeHP(amount:Int):Void
+	{
+		hp -= amount;
+	}
+	
+	public function get_HP():Int
+	{
+		return hp;
 	}
 
 	/*public function mouseProcess(mouse:MouseEvent) : Void
