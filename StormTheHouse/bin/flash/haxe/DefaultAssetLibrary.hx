@@ -70,6 +70,9 @@ class DefaultAssetLibrary extends AssetLibrary {
 		
 		
 		
+		
+		
+		
 		#end
 		
 		#if flash
@@ -110,6 +113,12 @@ class DefaultAssetLibrary extends AssetLibrary {
 		type.set ("map/BigMap_Small Objects.csv", AssetType.TEXT);
 		className.set ("map/BigMap_Walls.csv", __ASSET__map_bigmap_walls_csv);
 		type.set ("map/BigMap_Walls.csv", AssetType.TEXT);
+		className.set ("sound/war_go_go_go.ogg", __ASSET__sound_war_go_go_go_ogg);
+		type.set ("sound/war_go_go_go.ogg", AssetType.SOUND);
+		className.set ("ui/buttonLong_blue.png", __ASSET__ui_buttonlong_blue_png);
+		type.set ("ui/buttonLong_blue.png", AssetType.IMAGE);
+		className.set ("ui/buttonLong_blue_pressed.png", __ASSET__ui_buttonlong_blue_pressed_png);
+		type.set ("ui/buttonLong_blue_pressed.png", AssetType.IMAGE);
 		
 		
 		#elseif html5
@@ -187,6 +196,18 @@ class DefaultAssetLibrary extends AssetLibrary {
 		path.set (id, id);
 		
 		type.set (id, AssetType.TEXT);
+		id = "sound/war_go_go_go.ogg";
+		path.set (id, id);
+		
+		type.set (id, AssetType.SOUND);
+		id = "ui/buttonLong_blue.png";
+		path.set (id, id);
+		
+		type.set (id, AssetType.IMAGE);
+		id = "ui/buttonLong_blue_pressed.png";
+		path.set (id, id);
+		
+		type.set (id, AssetType.IMAGE);
 		
 		
 		var assetsPrefix = null;
@@ -258,6 +279,15 @@ class DefaultAssetLibrary extends AssetLibrary {
 		
 		className.set ("map/BigMap_Walls.csv", __ASSET__map_bigmap_walls_csv);
 		type.set ("map/BigMap_Walls.csv", AssetType.TEXT);
+		
+		className.set ("sound/war_go_go_go.ogg", __ASSET__sound_war_go_go_go_ogg);
+		type.set ("sound/war_go_go_go.ogg", AssetType.SOUND);
+		
+		className.set ("ui/buttonLong_blue.png", __ASSET__ui_buttonlong_blue_png);
+		type.set ("ui/buttonLong_blue.png", AssetType.IMAGE);
+		
+		className.set ("ui/buttonLong_blue_pressed.png", __ASSET__ui_buttonlong_blue_pressed_png);
+		type.set ("ui/buttonLong_blue_pressed.png", AssetType.IMAGE);
 		
 		
 		if (useManifest) {
@@ -921,6 +951,9 @@ class DefaultAssetLibrary extends AssetLibrary {
 @:keep @:bind #if display private #end class __ASSET__map_bigmap_objects_csv extends flash.utils.ByteArray { }
 @:keep @:bind #if display private #end class __ASSET__map_bigmap_small_objects_csv extends flash.utils.ByteArray { }
 @:keep @:bind #if display private #end class __ASSET__map_bigmap_walls_csv extends flash.utils.ByteArray { }
+@:keep @:bind #if display private #end class __ASSET__sound_war_go_go_go_ogg extends flash.media.Sound { }
+@:keep @:bind #if display private #end class __ASSET__ui_buttonlong_blue_png extends flash.display.BitmapData { public function new () { super (0, 0, true, 0); } }
+@:keep @:bind #if display private #end class __ASSET__ui_buttonlong_blue_pressed_png extends flash.display.BitmapData { public function new () { super (0, 0, true, 0); } }
 
 
 #elseif html5
@@ -929,6 +962,9 @@ class DefaultAssetLibrary extends AssetLibrary {
 
 @:keep #if display private #end class __ASSET__flixel_fonts_nokiafc22_ttf extends lime.text.Font { public function new () { super (); name = "Nokia Cellphone FC Small"; } } 
 @:keep #if display private #end class __ASSET__flixel_fonts_monsterrat_ttf extends lime.text.Font { public function new () { super (); name = "Monsterrat"; } } 
+
+
+
 
 
 
@@ -970,6 +1006,9 @@ class DefaultAssetLibrary extends AssetLibrary {
 @:file("assets/maps/BigMap_Objects.csv") #if display private #end class __ASSET__map_bigmap_objects_csv extends lime.utils.Bytes {}
 @:file("assets/maps/BigMap_Small Objects.csv") #if display private #end class __ASSET__map_bigmap_small_objects_csv extends lime.utils.Bytes {}
 @:file("assets/maps/BigMap_Walls.csv") #if display private #end class __ASSET__map_bigmap_walls_csv extends lime.utils.Bytes {}
+@:file("assets/sound/war_go_go_go.ogg") #if display private #end class __ASSET__sound_war_go_go_go_ogg extends lime.utils.Bytes {}
+@:image("assets/ui/buttonLong_blue.png") #if display private #end class __ASSET__ui_buttonlong_blue_png extends lime.graphics.Image {}
+@:image("assets/ui/buttonLong_blue_pressed.png") #if display private #end class __ASSET__ui_buttonlong_blue_pressed_png extends lime.graphics.Image {}
 
 
 

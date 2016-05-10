@@ -15,7 +15,6 @@ class Mirko extends FlxSprite
 	static private inline var ACCELERATION:Float = 1000;
 	static private inline var SPEED:Float = 500;
 	var gun:Gun;
-
 	var hp:Int;
 
 	public function new(?X:Float=0, ?Y:Float=0, aGun:Gun) 
@@ -66,6 +65,11 @@ class Mirko extends FlxSprite
 	public function get_HP():Int
 	{
 		return hp;
+	}
+	
+	public function setHp(amount:Int):Void
+	{
+		hp = amount;
 	}
 
 	/*public function mouseProcess(mouse:MouseEvent) : Void

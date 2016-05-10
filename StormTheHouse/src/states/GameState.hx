@@ -79,19 +79,27 @@ class GameState extends FlxState
 		FlxG.camera.setScrollBoundsRect(0, 0, mMapBack.width, mMapBack.height);
 		FlxG.worldBounds.set(0, 0, mMapBack.width, mMapBack.height);
 		
+		var aGun = new Gun(enemyBullets);
+		var enemy:Enemy = new Enemy(64 * 5 + 32, 64 * 6 + 32, aGun, mMapWalls);
+		enemies.add(enemy);
+		add(enemy);
+		
+		//FlxG.sound.play(Assets.getText("sound/war_go_go_go.ogg"));
+		
 	}
 	override public function update(aDelta:Float):Void 
 	{
 		super.update(aDelta);
 		time += aDelta;
-		if (time >= 1){
+		/*if (time >= 1){
 			var aGun = new Gun(enemyBullets);
 			var enemy:Enemy = new Enemy(500, 500, aGun, mMapWalls);
 			enemies.add(enemy);
 			add(enemy);
 			time = 0;
 		}
-		trace("hola");
+		*/
+		
 
 		FlxG.collide(mirko, mMapWalls);
 		FlxG.collide(enemies, mMapWalls);
@@ -112,7 +120,7 @@ class GameState extends FlxState
 	private function wallsVsBullets(walls:FlxTilemap,aBullet:Bullet):Void
 	{
 		aBullet.kill();
-		
+		FlxG.sound.play(Assets.getText("sound/war_go_go_go.ogg"));
 	}
 	
 	private function bulletVsEnemies(aBullet:Bullet,aEnemy:Enemy):Void
@@ -142,6 +150,7 @@ class GameState extends FlxState
 		bullets.clear();
 		enemyBullets.clear();
 		mirko.revive();
+		mirko.setHp(3);
 		mirko.x = 100;
 		mirko.y = 100;
 		score = 0;

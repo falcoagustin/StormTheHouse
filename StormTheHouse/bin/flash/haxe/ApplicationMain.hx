@@ -102,6 +102,18 @@ class ApplicationMain {
 		types.push (lime.Assets.AssetType.TEXT);
 		
 		
+		urls.push ("sound/war_go_go_go.ogg");
+		types.push (lime.Assets.AssetType.SOUND);
+		
+		
+		urls.push ("ui/buttonLong_blue.png");
+		types.push (lime.Assets.AssetType.IMAGE);
+		
+		
+		urls.push ("ui/buttonLong_blue_pressed.png");
+		types.push (lime.Assets.AssetType.IMAGE);
+		
+		
 		
 		if (config.assetsPrefix != null) {
 			
