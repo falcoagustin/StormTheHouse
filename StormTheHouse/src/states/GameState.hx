@@ -4,6 +4,7 @@ import flixel.FlxG;
 import flixel.FlxObject;
 import flixel.FlxState;
 import flixel.group.FlxGroup;
+import flixel.math.FlxPoint;
 import flixel.text.FlxText;
 import flixel.tile.FlxTilemap;
 import flixel.ui.FlxButton;
@@ -11,6 +12,7 @@ import gameObjects.Bullet;
 import gameObjects.Enemy;
 import gameObjects.Gun;
 import gameObjects.Mirko;
+import gameObjects.Vodka;
 import openfl.Assets;
 
 class GameState extends FlxState
@@ -29,6 +31,9 @@ class GameState extends FlxState
 	var time:Float;
 	var gameOver:FlxText;
 	var restartButton:FlxButton;
+	var killesToVodka:Int;
+	var vodkas:FlxGroup;
+	var enemyEntryPoints:Array<FlxPoint>;
 
 	public function new() 
 	{
@@ -46,6 +51,8 @@ class GameState extends FlxState
 		mMapWalls.loadMapFromCSV(Assets.getText("map/BasicMap_Walls.csv"), Assets.getBitmapData("img/tilesheet_complete.png"), 64, 64,null,0,0);
 		add(mMapWalls);
 		
+		vodkas = new FlxGroup();
+		add(vodkas);
 		bullets = new FlxGroup();
 		add(bullets);
 		enemyBullets = new FlxGroup();
@@ -58,13 +65,7 @@ class GameState extends FlxState
 		
 		GlobalGameData.instance.setPlayer(mirko);
 		
-		enemies = new FlxGroup();/*
-		for (i in 0...10){
-			var aGun = new Gun(enemyBullets);
-			var enemy:Enemy = new Enemy(100 * i, 200, aGun, mMapWalls);
-			enemies.add(enemy);
-		}
-		*/
+		enemies = new FlxGroup();
 		add(enemies);
 		
 		score = 0;
@@ -79,10 +80,15 @@ class GameState extends FlxState
 		FlxG.camera.setScrollBoundsRect(0, 0, mMapBack.width, mMapBack.height);
 		FlxG.worldBounds.set(0, 0, mMapBack.width, mMapBack.height);
 		
+		
 		var aGun = new Gun(enemyBullets);
 		var enemy:Enemy = new Enemy(64 * 5 + 32, 64 * 6 + 32, aGun, mMapWalls);
 		enemies.add(enemy);
 		add(enemy);
+		
+		enemyEntryPoints = setEnemiesEntryPoints();
+		
+		killesToVodka = 5;
 		
 		//FlxG.sound.play(Assets.getText("sound/war_go_go_go.ogg"));
 		
@@ -91,14 +97,16 @@ class GameState extends FlxState
 	{
 		super.update(aDelta);
 		time += aDelta;
-		/*if (time >= 1){
+		if (time >= 2){
+			
 			var aGun = new Gun(enemyBullets);
-			var enemy:Enemy = new Enemy(500, 500, aGun, mMapWalls);
+			var point = enemyEntryPoints[FlxG.random.int(0, 3)];
+			var enemy:Enemy = new Enemy(point.x, point.y, aGun, mMapWalls);
 			enemies.add(enemy);
 			add(enemy);
 			time = 0;
 		}
-		*/
+		
 		
 
 		FlxG.collide(mirko, mMapWalls);
@@ -108,6 +116,7 @@ class GameState extends FlxState
 		FlxG.collide(mMapWalls, enemyBullets, wallsVsBullets);
 		FlxG.overlap(bullets, enemies, bulletVsEnemies);
 		FlxG.overlap(enemyBullets, mirko, bulletVsMirko);
+		FlxG.overlap(mirko, vodkas, mirkoVsVodka);
 		score = GlobalGameData.instance.getScore();
 		scoreLabel.x = mirko.x;
 		scoreLabel.y = mirko.y - 30;
@@ -128,13 +137,20 @@ class GameState extends FlxState
 		aBullet.kill();
 		aEnemy.damage();
 		
+		killesToVodka -= 1;
+		if (killesToVodka == 0){
+			killesToVodka = 5;
+			var vodka = new Vodka(FlxG.random.int(0, 1280), FlxG.random.int(0, 720));
+			vodkas.add(vodka);
+		}
+		
 	}
 	
 	private function bulletVsMirko(aBullet:Bullet, aMirko:Mirko):Void
 	{
 		
 		aBullet.kill();
-		if (aMirko.get_HP() > 0)
+		if (aMirko.get_HP() > 1)
 		{
 			aMirko.removeHP(1);
 		}else
@@ -142,24 +158,43 @@ class GameState extends FlxState
 			aMirko.kill();
 			gameOver = new FlxText(mirko.x, mirko.y, 500, "GameOver", 20);
 			add(gameOver);
-			restartGame();
+			restartButton = new FlxButton(gameOver.x + 30 , gameOver.y +30, "Restart", restartGame);
+			//restartButton.parallax.set(0);
+			add(restartButton);
 		}
 	}
 	
+	private function mirkoVsVodka(aMirko:Mirko, aVodka:Vodka):Void
+	{
+		aVodka.kill();
+		var health:Int = mirko.get_HP();
+		health++;
+		mirko.setHp(health);
+		hpLabel.text = "HP: " + cast health;
+		
+	}
+	
 	private function restartGame():Void{
-		bullets.clear();
-		enemyBullets.clear();
-		mirko.revive();
-		mirko.setHp(3);
-		mirko.x = 100;
-		mirko.y = 100;
-		score = 0;
-		gameOver.kill();
-		for (i in enemies){
-			i.destroy();
-		}
-		enemies.kill();
 
+		FlxG.resetState();
+
+	}
+	
+	private function setEnemiesEntryPoints():Array<FlxPoint>
+	{
+		var points = new Array<FlxPoint>();
+		
+		var point1 = new FlxPoint( -10, -10);
+		var point2 = new FlxPoint( -10, mMapBack.height + 10);
+		var point3 = new FlxPoint( mMapBack.width + 10, -10);
+		var point4 = new FlxPoint(mMapBack.height + 10, mMapBack.width + 10);
+		
+		points.push(point1);
+		points.push(point2);
+		points.push(point3);
+		points.push(point4);
+		
+		return points;
 	}
 	
 }

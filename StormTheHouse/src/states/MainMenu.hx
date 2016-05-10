@@ -33,6 +33,8 @@ class MainMenu extends FlxState
 		add(titleText);
 		add(newGameButton);
 		FlxG.camera.bgColor = 0xFF999999;
+		
+		var descripcion = "Mirko se encuentra en un pueblo lleno de amenazas, agentes especiales, zombies, robots.\n Elimina a todos los posibles. A Mirko le gusta el vodka, dice que le da energia. Su arma favorita es la kalashnikov";
 	}
 	private function startNewGame():Void
 	{

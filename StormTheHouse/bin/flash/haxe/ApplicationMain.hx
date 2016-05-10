@@ -70,6 +70,10 @@ class ApplicationMain {
 		types.push (lime.Assets.AssetType.IMAGE);
 		
 		
+		urls.push ("img/vodka.png");
+		types.push (lime.Assets.AssetType.IMAGE);
+		
+		
 		urls.push ("map/BasicMap.csv");
 		types.push (lime.Assets.AssetType.TEXT);
 		
@@ -102,8 +106,8 @@ class ApplicationMain {
 		types.push (lime.Assets.AssetType.TEXT);
 		
 		
-		urls.push ("sound/war_go_go_go.ogg");
-		types.push (lime.Assets.AssetType.SOUND);
+		urls.push ("sound/9mm.mp3");
+		types.push (lime.Assets.AssetType.MUSIC);
 		
 		
 		urls.push ("ui/buttonLong_blue.png");

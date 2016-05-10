@@ -39,7 +39,9 @@ class Enemy extends FlxSprite
 		this.path = new FlxPath();
 		defaultPath = setDefaultPath();
 		previousPoint = new FlxPoint(X, Y);
-		startDefaultPath();
+		moveToStart();
+		this.path.onComplete = startPath;
+		
 		isOnDefaultPath = true;
 		
 	}

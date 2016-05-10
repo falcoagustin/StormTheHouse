@@ -24,7 +24,7 @@
 	<icon path="assets/openfl.svg" />
 	<assets path="assets/img" rename="img" />
 	<assets path="assets/maps" rename="map" />
-	<assets path="assets/sound" rename="sound" />
+	<assets path="assets/sound" rename="sound" include="*.mp3" if="flash" />
 	<assets path="assets/ui" rename="ui" />
 
 	

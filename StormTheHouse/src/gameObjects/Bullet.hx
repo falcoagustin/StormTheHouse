@@ -43,7 +43,7 @@ class Bullet extends FlxSprite
 		deltaX /= length;
 		deltaY /= length;
 
-		velocity.x = deltaX * 3000;
-		velocity.y = deltaY * 3000;
+		velocity.x = deltaX * 2000;
+		velocity.y = deltaY * 2000;
 	}
 }
