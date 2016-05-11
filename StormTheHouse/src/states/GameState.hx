@@ -48,7 +48,7 @@ class GameState extends FlxState
 		add(mMapBack);
 		
 		mMapWalls = new FlxTilemap();
-		mMapWalls.loadMapFromCSV(Assets.getText("map/BasicMap_Walls.csv"), Assets.getBitmapData("img/tilesheet_complete.png"), 64, 64,null,0,0);
+		mMapWalls.loadMapFromCSV(Assets.getText("map/BasicMap_Walls.csv"), Assets.getBitmapData("img/tilesheet_complete.png"), 64, 64,null,0,1);
 		add(mMapWalls);
 		
 		vodkas = new FlxGroup();
@@ -129,7 +129,7 @@ class GameState extends FlxState
 	private function wallsVsBullets(walls:FlxTilemap,aBullet:Bullet):Void
 	{
 		aBullet.kill();
-		FlxG.sound.play(Assets.getText("sound/war_go_go_go.ogg"));
+		//FlxG.sound.play(Assets.getText("sound/war_go_go_go.ogg"));
 	}
 	
 	private function bulletVsEnemies(aBullet:Bullet,aEnemy:Enemy):Void
@@ -140,7 +140,14 @@ class GameState extends FlxState
 		killesToVodka -= 1;
 		if (killesToVodka == 0){
 			killesToVodka = 5;
-			var vodka = new Vodka(FlxG.random.int(0, 1280), FlxG.random.int(0, 720));
+			var xPoints = FlxG.random.int(0, 1280);
+			var yPoints = FlxG.random.int(0, 720);
+			if (mMapWalls.getTile(Std.int(xPoints / 64), Std.int(yPoints / 64)) != -1 )
+			{
+				xPoints += 64;
+				yPoints += 64;
+			}
+			var vodka = new Vodka(xPoints, yPoints);
 			vodkas.add(vodka);
 		}
 		
@@ -158,8 +165,9 @@ class GameState extends FlxState
 			aMirko.kill();
 			gameOver = new FlxText(mirko.x, mirko.y, 500, "GameOver", 20);
 			add(gameOver);
-			restartButton = new FlxButton(gameOver.x + 30 , gameOver.y +30, "Restart", restartGame);
+			restartButton = new FlxButton(350 , 300, "Restart", restartGame);
 			//restartButton.parallax.set(0);
+			restartButton.scrollFactor.set(0,0);
 			add(restartButton);
 		}
 	}
@@ -174,8 +182,9 @@ class GameState extends FlxState
 		
 	}
 	
-	private function restartGame():Void{
-
+	private function restartGame():Void		
+	{
+		GlobalGameData.instance.setScore(0);
 		FlxG.resetState();
 
 	}

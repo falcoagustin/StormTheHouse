@@ -131,7 +131,6 @@ class Enemy extends FlxSprite
 		mirko = GlobalGameData.instance.getPlayer();
 		var mirkoWidth:Float = 49;
 		var mirkoHeight:Float = 43;
-		// Find path to goal from unit to goal
 		var pathPoints:Array<FlxPoint> = tileMap.findPath(
 			FlxPoint.get(x + width / 2, y + height / 2),
 			FlxPoint.get(mirko.x + mirkoWidth / 2, mirko.y + mirkoHeight / 2));

@@ -47,7 +47,7 @@ class Mirko extends FlxSprite
 		}
 		if (FlxG.mouse.get_justPressed()){
 			gun.shoot(x, y, FlxG.mouse.x, FlxG.mouse.y);
-			FlxG.sound.play(Assets.getText("sound.9mm.mp3"));
+			//FlxG.sound.play(Assets.getText("sound.9mm.mp3"));
 		}
 
 
