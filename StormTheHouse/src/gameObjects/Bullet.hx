@@ -22,11 +22,6 @@ class Bullet extends FlxSprite
 	override function reset(xOrigin:Float, yOrigin:Float):Void
 	{
 		super.reset(xOrigin, yOrigin);
-		//velocity.x = 1000;
-		//var deltaX:Float = FlxG.mouse.x - x;
-		//var deltaY:Float = FlxG.mouse.y - y;
-
-
 	}
 	
 	public function resetAndShoot(xOrigin:Float, yOrigin:Float, xDestiny:Float, yDestiny:Float):Void
@@ -35,6 +30,9 @@ class Bullet extends FlxSprite
 		var deltaX:Float = xDestiny - x;
 		var deltaY:Float = yDestiny - y;
 
+		var angle = Math.atan2(deltaY, deltaX) * 180 / Math.PI;
+		
+		
 		var length:Float = Math.sqrt(deltaX * deltaX + deltaY * deltaY);
 
 		if (length == 0){

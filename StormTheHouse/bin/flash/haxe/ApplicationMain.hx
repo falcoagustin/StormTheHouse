@@ -50,11 +50,31 @@ class ApplicationMain {
 		types.push (lime.Assets.AssetType.IMAGE);
 		
 		
+		urls.push ("img/gun.png");
+		types.push (lime.Assets.AssetType.IMAGE);
+		
+		
+		urls.push ("img/manBlue_machine.png");
+		types.push (lime.Assets.AssetType.IMAGE);
+		
+		
 		urls.push ("img/manOld_gun.png");
 		types.push (lime.Assets.AssetType.IMAGE);
 		
 		
 		urls.push ("img/manOld_silencer.png");
+		types.push (lime.Assets.AssetType.IMAGE);
+		
+		
+		urls.push ("img/Minigun.png");
+		types.push (lime.Assets.AssetType.IMAGE);
+		
+		
+		urls.push ("img/shotgun.png");
+		types.push (lime.Assets.AssetType.IMAGE);
+		
+		
+		urls.push ("img/Sniper.png");
 		types.push (lime.Assets.AssetType.IMAGE);
 		
 		
@@ -70,12 +90,16 @@ class ApplicationMain {
 		types.push (lime.Assets.AssetType.IMAGE);
 		
 		
+		urls.push ("img/tilesheet_complete_rotate.png");
+		types.push (lime.Assets.AssetType.IMAGE);
+		
+		
 		urls.push ("img/vodka.png");
 		types.push (lime.Assets.AssetType.IMAGE);
 		
 		
-		urls.push ("map/BasicMap.csv");
-		types.push (lime.Assets.AssetType.TEXT);
+		urls.push ("img/zoimbie1_hold.png");
+		types.push (lime.Assets.AssetType.IMAGE);
 		
 		
 		urls.push ("map/BasicMap_Background.csv");
@@ -99,6 +123,10 @@ class ApplicationMain {
 		
 		
 		urls.push ("map/BigMap_Small Objects.csv");
+		types.push (lime.Assets.AssetType.TEXT);
+		
+		
+		urls.push ("map/BigMap_Small_Objects.csv");
 		types.push (lime.Assets.AssetType.TEXT);
 		
 		

@@ -3,6 +3,7 @@ package gameObjects;
 import flixel.FlxG;
 import flixel.FlxSprite;
 import flixel.system.FlxAssets.FlxGraphicAsset;
+import gameObjects.weapons.Weapon;
 import openfl.Assets;
 import openfl.events.MouseEvent;
 
@@ -14,18 +15,19 @@ class Mirko extends FlxSprite
 {
 	static private inline var ACCELERATION:Float = 1000;
 	static private inline var SPEED:Float = 500;
-	var gun:Gun;
+	var weapon:Weapon;
 	var hp:Int;
 
-	public function new(?X:Float=0, ?Y:Float=0, aGun:Gun) 
+	
+	public function new(?X:Float=0, ?Y:Float=0, aWeapon:Weapon) 
 	{
 		super(X, Y);
 		makeGraphic(50, 50);
 		maxVelocity.set(400, 400);
 		drag.set(500, 500);
-		gun = aGun;
+		weapon = aWeapon;
 		loadGraphic(Assets.getBitmapData("img/manOld_gun.png"), true, 49, 43);
-		hp = 3;
+		hp = 5;
 
 	}
 
@@ -46,8 +48,8 @@ class Mirko extends FlxSprite
 			velocity.y -= SPEED;
 		}
 		if (FlxG.mouse.get_justPressed()){
-			gun.shoot(x, y, FlxG.mouse.x, FlxG.mouse.y);
-			//FlxG.sound.play(Assets.getText("sound.9mm.mp3"));
+			weapon.atack(x, y, FlxG.mouse.x, FlxG.mouse.y, 0);
+			//FlxG.sound.play(Assets.getText("sound/9mm.mp3"));
 		}
 
 
@@ -73,11 +75,9 @@ class Mirko extends FlxSprite
 		hp = amount;
 	}
 
-	/*public function mouseProcess(mouse:MouseEvent) : Void
+	public function setWeapon(aWeapon:Weapon)
 	{
-	    
-
+		weapon = aWeapon;
 	}
-	*/
 
 }

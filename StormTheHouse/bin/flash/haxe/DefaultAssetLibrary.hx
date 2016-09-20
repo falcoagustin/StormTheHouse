@@ -74,6 +74,13 @@ class DefaultAssetLibrary extends AssetLibrary {
 		
 		
 		
+		
+		
+		
+		
+		
+		
+		
 		#end
 		
 		#if flash
@@ -88,20 +95,32 @@ class DefaultAssetLibrary extends AssetLibrary {
 		type.set ("flixel/fonts/monsterrat.ttf", AssetType.FONT);
 		className.set ("flixel/images/ui/button.png", __ASSET__flixel_images_ui_button_png);
 		type.set ("flixel/images/ui/button.png", AssetType.IMAGE);
+		className.set ("img/gun.png", __ASSET__img_gun_png);
+		type.set ("img/gun.png", AssetType.IMAGE);
+		className.set ("img/manBlue_machine.png", __ASSET__img_manblue_machine_png);
+		type.set ("img/manBlue_machine.png", AssetType.IMAGE);
 		className.set ("img/manOld_gun.png", __ASSET__img_manold_gun_png);
 		type.set ("img/manOld_gun.png", AssetType.IMAGE);
 		className.set ("img/manOld_silencer.png", __ASSET__img_manold_silencer_png);
 		type.set ("img/manOld_silencer.png", AssetType.IMAGE);
+		className.set ("img/Minigun.png", __ASSET__img_minigun_png);
+		type.set ("img/Minigun.png", AssetType.IMAGE);
+		className.set ("img/shotgun.png", __ASSET__img_shotgun_png);
+		type.set ("img/shotgun.png", AssetType.IMAGE);
+		className.set ("img/Sniper.png", __ASSET__img_sniper_png);
+		type.set ("img/Sniper.png", AssetType.IMAGE);
 		className.set ("img/spritesheet_characters.png", __ASSET__img_spritesheet_characters_png);
 		type.set ("img/spritesheet_characters.png", AssetType.IMAGE);
 		className.set ("img/survivor1_gun.png", __ASSET__img_survivor1_gun_png);
 		type.set ("img/survivor1_gun.png", AssetType.IMAGE);
 		className.set ("img/tilesheet_complete.png", __ASSET__img_tilesheet_complete_png);
 		type.set ("img/tilesheet_complete.png", AssetType.IMAGE);
+		className.set ("img/tilesheet_complete_rotate.png", __ASSET__img_tilesheet_complete_rotate_png);
+		type.set ("img/tilesheet_complete_rotate.png", AssetType.IMAGE);
 		className.set ("img/vodka.png", __ASSET__img_vodka_png);
 		type.set ("img/vodka.png", AssetType.IMAGE);
-		className.set ("map/BasicMap.csv", __ASSET__map_basicmap_csv);
-		type.set ("map/BasicMap.csv", AssetType.TEXT);
+		className.set ("img/zoimbie1_hold.png", __ASSET__img_zoimbie1_hold_png);
+		type.set ("img/zoimbie1_hold.png", AssetType.IMAGE);
 		className.set ("map/BasicMap_Background.csv", __ASSET__map_basicmap_background_csv);
 		type.set ("map/BasicMap_Background.csv", AssetType.TEXT);
 		className.set ("map/BasicMap_Walls.csv", __ASSET__map_basicmap_walls_csv);
@@ -114,6 +133,8 @@ class DefaultAssetLibrary extends AssetLibrary {
 		type.set ("map/BigMap_Objects.csv", AssetType.TEXT);
 		className.set ("map/BigMap_Small Objects.csv", __ASSET__map_bigmap_small_objects_csv);
 		type.set ("map/BigMap_Small Objects.csv", AssetType.TEXT);
+		className.set ("map/BigMap_Small_Objects.csv", __ASSET__map_bigmap_small_objects_csv1);
+		type.set ("map/BigMap_Small_Objects.csv", AssetType.TEXT);
 		className.set ("map/BigMap_Walls.csv", __ASSET__map_bigmap_walls_csv);
 		type.set ("map/BigMap_Walls.csv", AssetType.TEXT);
 		className.set ("sound/9mm.mp3", __ASSET__sound_9mm_mp3);
@@ -147,11 +168,31 @@ class DefaultAssetLibrary extends AssetLibrary {
 		path.set (id, id);
 		
 		type.set (id, AssetType.IMAGE);
+		id = "img/gun.png";
+		path.set (id, id);
+		
+		type.set (id, AssetType.IMAGE);
+		id = "img/manBlue_machine.png";
+		path.set (id, id);
+		
+		type.set (id, AssetType.IMAGE);
 		id = "img/manOld_gun.png";
 		path.set (id, id);
 		
 		type.set (id, AssetType.IMAGE);
 		id = "img/manOld_silencer.png";
+		path.set (id, id);
+		
+		type.set (id, AssetType.IMAGE);
+		id = "img/Minigun.png";
+		path.set (id, id);
+		
+		type.set (id, AssetType.IMAGE);
+		id = "img/shotgun.png";
+		path.set (id, id);
+		
+		type.set (id, AssetType.IMAGE);
+		id = "img/Sniper.png";
 		path.set (id, id);
 		
 		type.set (id, AssetType.IMAGE);
@@ -167,14 +208,18 @@ class DefaultAssetLibrary extends AssetLibrary {
 		path.set (id, id);
 		
 		type.set (id, AssetType.IMAGE);
+		id = "img/tilesheet_complete_rotate.png";
+		path.set (id, id);
+		
+		type.set (id, AssetType.IMAGE);
 		id = "img/vodka.png";
 		path.set (id, id);
 		
 		type.set (id, AssetType.IMAGE);
-		id = "map/BasicMap.csv";
+		id = "img/zoimbie1_hold.png";
 		path.set (id, id);
 		
-		type.set (id, AssetType.TEXT);
+		type.set (id, AssetType.IMAGE);
 		id = "map/BasicMap_Background.csv";
 		path.set (id, id);
 		
@@ -196,6 +241,10 @@ class DefaultAssetLibrary extends AssetLibrary {
 		
 		type.set (id, AssetType.TEXT);
 		id = "map/BigMap_Small Objects.csv";
+		path.set (id, id);
+		
+		type.set (id, AssetType.TEXT);
+		id = "map/BigMap_Small_Objects.csv";
 		path.set (id, id);
 		
 		type.set (id, AssetType.TEXT);
@@ -248,11 +297,26 @@ class DefaultAssetLibrary extends AssetLibrary {
 		className.set ("flixel/images/ui/button.png", __ASSET__flixel_images_ui_button_png);
 		type.set ("flixel/images/ui/button.png", AssetType.IMAGE);
 		
+		className.set ("img/gun.png", __ASSET__img_gun_png);
+		type.set ("img/gun.png", AssetType.IMAGE);
+		
+		className.set ("img/manBlue_machine.png", __ASSET__img_manblue_machine_png);
+		type.set ("img/manBlue_machine.png", AssetType.IMAGE);
+		
 		className.set ("img/manOld_gun.png", __ASSET__img_manold_gun_png);
 		type.set ("img/manOld_gun.png", AssetType.IMAGE);
 		
 		className.set ("img/manOld_silencer.png", __ASSET__img_manold_silencer_png);
 		type.set ("img/manOld_silencer.png", AssetType.IMAGE);
+		
+		className.set ("img/Minigun.png", __ASSET__img_minigun_png);
+		type.set ("img/Minigun.png", AssetType.IMAGE);
+		
+		className.set ("img/shotgun.png", __ASSET__img_shotgun_png);
+		type.set ("img/shotgun.png", AssetType.IMAGE);
+		
+		className.set ("img/Sniper.png", __ASSET__img_sniper_png);
+		type.set ("img/Sniper.png", AssetType.IMAGE);
 		
 		className.set ("img/spritesheet_characters.png", __ASSET__img_spritesheet_characters_png);
 		type.set ("img/spritesheet_characters.png", AssetType.IMAGE);
@@ -263,11 +327,14 @@ class DefaultAssetLibrary extends AssetLibrary {
 		className.set ("img/tilesheet_complete.png", __ASSET__img_tilesheet_complete_png);
 		type.set ("img/tilesheet_complete.png", AssetType.IMAGE);
 		
+		className.set ("img/tilesheet_complete_rotate.png", __ASSET__img_tilesheet_complete_rotate_png);
+		type.set ("img/tilesheet_complete_rotate.png", AssetType.IMAGE);
+		
 		className.set ("img/vodka.png", __ASSET__img_vodka_png);
 		type.set ("img/vodka.png", AssetType.IMAGE);
 		
-		className.set ("map/BasicMap.csv", __ASSET__map_basicmap_csv);
-		type.set ("map/BasicMap.csv", AssetType.TEXT);
+		className.set ("img/zoimbie1_hold.png", __ASSET__img_zoimbie1_hold_png);
+		type.set ("img/zoimbie1_hold.png", AssetType.IMAGE);
 		
 		className.set ("map/BasicMap_Background.csv", __ASSET__map_basicmap_background_csv);
 		type.set ("map/BasicMap_Background.csv", AssetType.TEXT);
@@ -286,6 +353,9 @@ class DefaultAssetLibrary extends AssetLibrary {
 		
 		className.set ("map/BigMap_Small Objects.csv", __ASSET__map_bigmap_small_objects_csv);
 		type.set ("map/BigMap_Small Objects.csv", AssetType.TEXT);
+		
+		className.set ("map/BigMap_Small_Objects.csv", __ASSET__map_bigmap_small_objects_csv1);
+		type.set ("map/BigMap_Small_Objects.csv", AssetType.TEXT);
 		
 		className.set ("map/BigMap_Walls.csv", __ASSET__map_bigmap_walls_csv);
 		type.set ("map/BigMap_Walls.csv", AssetType.TEXT);
@@ -948,19 +1018,26 @@ class DefaultAssetLibrary extends AssetLibrary {
 @:keep @:bind #if display private #end class __ASSET__flixel_fonts_nokiafc22_ttf extends flash.text.Font { }
 @:keep @:bind #if display private #end class __ASSET__flixel_fonts_monsterrat_ttf extends flash.text.Font { }
 @:keep @:bind #if display private #end class __ASSET__flixel_images_ui_button_png extends flash.display.BitmapData { public function new () { super (0, 0, true, 0); } }
+@:keep @:bind #if display private #end class __ASSET__img_gun_png extends flash.display.BitmapData { public function new () { super (0, 0, true, 0); } }
+@:keep @:bind #if display private #end class __ASSET__img_manblue_machine_png extends flash.display.BitmapData { public function new () { super (0, 0, true, 0); } }
 @:keep @:bind #if display private #end class __ASSET__img_manold_gun_png extends flash.display.BitmapData { public function new () { super (0, 0, true, 0); } }
 @:keep @:bind #if display private #end class __ASSET__img_manold_silencer_png extends flash.display.BitmapData { public function new () { super (0, 0, true, 0); } }
+@:keep @:bind #if display private #end class __ASSET__img_minigun_png extends flash.display.BitmapData { public function new () { super (0, 0, true, 0); } }
+@:keep @:bind #if display private #end class __ASSET__img_shotgun_png extends flash.display.BitmapData { public function new () { super (0, 0, true, 0); } }
+@:keep @:bind #if display private #end class __ASSET__img_sniper_png extends flash.display.BitmapData { public function new () { super (0, 0, true, 0); } }
 @:keep @:bind #if display private #end class __ASSET__img_spritesheet_characters_png extends flash.display.BitmapData { public function new () { super (0, 0, true, 0); } }
 @:keep @:bind #if display private #end class __ASSET__img_survivor1_gun_png extends flash.display.BitmapData { public function new () { super (0, 0, true, 0); } }
 @:keep @:bind #if display private #end class __ASSET__img_tilesheet_complete_png extends flash.display.BitmapData { public function new () { super (0, 0, true, 0); } }
+@:keep @:bind #if display private #end class __ASSET__img_tilesheet_complete_rotate_png extends flash.display.BitmapData { public function new () { super (0, 0, true, 0); } }
 @:keep @:bind #if display private #end class __ASSET__img_vodka_png extends flash.display.BitmapData { public function new () { super (0, 0, true, 0); } }
-@:keep @:bind #if display private #end class __ASSET__map_basicmap_csv extends flash.utils.ByteArray { }
+@:keep @:bind #if display private #end class __ASSET__img_zoimbie1_hold_png extends flash.display.BitmapData { public function new () { super (0, 0, true, 0); } }
 @:keep @:bind #if display private #end class __ASSET__map_basicmap_background_csv extends flash.utils.ByteArray { }
 @:keep @:bind #if display private #end class __ASSET__map_basicmap_walls_csv extends flash.utils.ByteArray { }
 @:keep @:bind #if display private #end class __ASSET__map_bigmap_background_csv extends flash.utils.ByteArray { }
 @:keep @:bind #if display private #end class __ASSET__map_bigmap_floor_csv extends flash.utils.ByteArray { }
 @:keep @:bind #if display private #end class __ASSET__map_bigmap_objects_csv extends flash.utils.ByteArray { }
 @:keep @:bind #if display private #end class __ASSET__map_bigmap_small_objects_csv extends flash.utils.ByteArray { }
+@:keep @:bind #if display private #end class __ASSET__map_bigmap_small_objects_csv1 extends flash.utils.ByteArray { }
 @:keep @:bind #if display private #end class __ASSET__map_bigmap_walls_csv extends flash.utils.ByteArray { }
 @:keep @:bind #if display private #end class __ASSET__sound_9mm_mp3 extends flash.media.Sound { }
 @:keep @:bind #if display private #end class __ASSET__ui_buttonlong_blue_png extends flash.display.BitmapData { public function new () { super (0, 0, true, 0); } }
@@ -993,6 +1070,13 @@ class DefaultAssetLibrary extends AssetLibrary {
 
 
 
+
+
+
+
+
+
+
 #else
 
 
@@ -1005,19 +1089,26 @@ class DefaultAssetLibrary extends AssetLibrary {
 @:font("C:/HaxeToolkit/haxe/lib/flixel/4,0,1/assets/fonts/nokiafc22.ttf") #if display private #end class __ASSET__flixel_fonts_nokiafc22_ttf extends lime.text.Font {}
 @:font("C:/HaxeToolkit/haxe/lib/flixel/4,0,1/assets/fonts/monsterrat.ttf") #if display private #end class __ASSET__flixel_fonts_monsterrat_ttf extends lime.text.Font {}
 @:image("C:/HaxeToolkit/haxe/lib/flixel/4,0,1/assets/images/ui/button.png") #if display private #end class __ASSET__flixel_images_ui_button_png extends lime.graphics.Image {}
+@:image("assets/img/gun.png") #if display private #end class __ASSET__img_gun_png extends lime.graphics.Image {}
+@:image("assets/img/manBlue_machine.png") #if display private #end class __ASSET__img_manblue_machine_png extends lime.graphics.Image {}
 @:image("assets/img/manOld_gun.png") #if display private #end class __ASSET__img_manold_gun_png extends lime.graphics.Image {}
 @:image("assets/img/manOld_silencer.png") #if display private #end class __ASSET__img_manold_silencer_png extends lime.graphics.Image {}
+@:image("assets/img/Minigun.png") #if display private #end class __ASSET__img_minigun_png extends lime.graphics.Image {}
+@:image("assets/img/shotgun.png") #if display private #end class __ASSET__img_shotgun_png extends lime.graphics.Image {}
+@:image("assets/img/Sniper.png") #if display private #end class __ASSET__img_sniper_png extends lime.graphics.Image {}
 @:image("assets/img/spritesheet_characters.png") #if display private #end class __ASSET__img_spritesheet_characters_png extends lime.graphics.Image {}
 @:image("assets/img/survivor1_gun.png") #if display private #end class __ASSET__img_survivor1_gun_png extends lime.graphics.Image {}
 @:image("assets/img/tilesheet_complete.png") #if display private #end class __ASSET__img_tilesheet_complete_png extends lime.graphics.Image {}
+@:image("assets/img/tilesheet_complete_rotate.png") #if display private #end class __ASSET__img_tilesheet_complete_rotate_png extends lime.graphics.Image {}
 @:image("assets/img/vodka.png") #if display private #end class __ASSET__img_vodka_png extends lime.graphics.Image {}
-@:file("assets/maps/BasicMap.csv") #if display private #end class __ASSET__map_basicmap_csv extends lime.utils.Bytes {}
+@:image("assets/img/zoimbie1_hold.png") #if display private #end class __ASSET__img_zoimbie1_hold_png extends lime.graphics.Image {}
 @:file("assets/maps/BasicMap_Background.csv") #if display private #end class __ASSET__map_basicmap_background_csv extends lime.utils.Bytes {}
 @:file("assets/maps/BasicMap_Walls.csv") #if display private #end class __ASSET__map_basicmap_walls_csv extends lime.utils.Bytes {}
 @:file("assets/maps/BigMap_Background.csv") #if display private #end class __ASSET__map_bigmap_background_csv extends lime.utils.Bytes {}
 @:file("assets/maps/BigMap_Floor.csv") #if display private #end class __ASSET__map_bigmap_floor_csv extends lime.utils.Bytes {}
 @:file("assets/maps/BigMap_Objects.csv") #if display private #end class __ASSET__map_bigmap_objects_csv extends lime.utils.Bytes {}
 @:file("assets/maps/BigMap_Small Objects.csv") #if display private #end class __ASSET__map_bigmap_small_objects_csv extends lime.utils.Bytes {}
+@:file("assets/maps/BigMap_Small_Objects.csv") #if display private #end class __ASSET__map_bigmap_small_objects_csv1 extends lime.utils.Bytes {}
 @:file("assets/maps/BigMap_Walls.csv") #if display private #end class __ASSET__map_bigmap_walls_csv extends lime.utils.Bytes {}
 @:file("assets/sound/9mm.mp3") #if display private #end class __ASSET__sound_9mm_mp3 extends lime.utils.Bytes {}
 @:image("assets/ui/buttonLong_blue.png") #if display private #end class __ASSET__ui_buttonlong_blue_png extends lime.graphics.Image {}

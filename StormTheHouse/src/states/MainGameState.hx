@@ -1,7 +1,7 @@
 package states;
-import flixel.FlxCamera;
+
+import flixel.FlxCamera.FlxCameraFollowStyle;
 import flixel.FlxG;
-import flixel.FlxObject;
 import flixel.FlxState;
 import flixel.group.FlxGroup;
 import flixel.math.FlxPoint;
@@ -9,25 +9,29 @@ import flixel.text.FlxText;
 import flixel.tile.FlxTilemap;
 import flixel.ui.FlxButton;
 import gameObjects.Bullet;
+import gameObjects.EnemiesLocationCreator;
 import gameObjects.MeleeHitbox;
-import gameObjects.enemies.PistolEnemy;
+import gameObjects.Mirko;
+import gameObjects.Vodka;
 import gameObjects.enemies.Enemy;
-import gameObjects.enemies.ShotgunEnemy;
+import gameObjects.enemies.PistolEnemy;
 import gameObjects.enemies.Zombie;
 import gameObjects.freeWeapons.FreeGun;
 import gameObjects.freeWeapons.FreeShotgun;
 import gameObjects.freeWeapons.FreeWeapon;
 import gameObjects.weapons.Gun;
-import gameObjects.Mirko;
-import gameObjects.Vodka;
 import gameObjects.weapons.Shotgun;
 import gameObjects.weapons.Weapon;
 import gameObjects.weapons.ZombieGrab;
 import openfl.Assets;
 
-class GameState extends FlxState
+/**
+ * ...
+ * @author MateoCarranza
+ */
+class MainGameState extends FlxState
 {
-
+	
 	var mMapBack:FlxTilemap;
 	var mMapWalls:FlxTilemap;
 	var mMapFloor:FlxTilemap;
@@ -43,13 +47,14 @@ class GameState extends FlxState
 	var score:Int;
 	var scoreLabel:FlxText;
 	var hpLabel:FlxText;
+	var zombiesAreComing:FlxText;
 	var time:Float;
 	var gameOver:FlxText;
 	var restartButton:FlxButton;
 	var killesToVodka:Int;
 	var vodkas:FlxGroup;
 	var enemyEntryPoints:Array<FlxPoint>;
-	var pathGenerator:PathGenerator;
+	var enemiesLocationCreator:EnemiesLocationCreator;
 
 	public function new() 
 	{
@@ -57,14 +62,37 @@ class GameState extends FlxState
 		
 		
 	}
+	
 	override public function create():Void 
 	{
+		addMap();
+		iniciateGroups();
+		addMirko();
+		setUI();
+		
+		FlxG.camera.follow(mirko, FlxCameraFollowStyle.TOPDOWN_TIGHT);
+		FlxG.camera.setScrollBoundsRect(0, 0, mMapBack.width, mMapBack.height);
+		FlxG.worldBounds.set(0, 0, mMapBack.width, mMapBack.height);
+		
+		time = 0;
+		killesToVodka = 5;
+		
+		enemiesLocationCreator = new EnemiesLocationCreator();
+		createInitialEnemies();
+		createInitialWeapons();
+		createInitialVodka();
+		
+	}
+	
+	
+	private function addMap()
+	{
 		mMapBack = new FlxTilemap();
-		mMapBack.loadMapFromCSV(Assets.getText("map/BigMap_Background.csv"), Assets.getBitmapData("img/tilesheet_complete.png"), 64, 64,null,0,0);
+		mMapBack.loadMapFromCSV(Assets.getText("map/BigMap_Background.csv"), Assets.getBitmapData("img/tilesheet_complete.png"), 64, 64,null,0,-1);
 		add(mMapBack);
 		
 		mMapFloor = new FlxTilemap();
-		mMapBack.loadMapFromCSV(Assets.getText("map/BigMap_Floor.csv"), Assets.getBitmapData("img/tilesheet_complete.png"), 64, 64,null,0,0);
+		mMapFloor.loadMapFromCSV(Assets.getText("map/BigMap_Floor.csv"), Assets.getBitmapData("img/tilesheet_complete.png"), 64, 64,null,0,1);
 		add(mMapFloor);
 		
 		mMapWalls = new FlxTilemap();
@@ -72,13 +100,29 @@ class GameState extends FlxState
 		add(mMapWalls);
 		
 		mMapObj = new FlxTilemap();
-		mMapBack.loadMapFromCSV(Assets.getText("map/BigMap_Objects.csv"), Assets.getBitmapData("img/tilesheet_complete.png"), 64, 64,null,0,0);
+		mMapObj.loadMapFromCSV(Assets.getText("map/BigMap_Objects.csv"), Assets.getBitmapData("img/tilesheet_complete_rotate.png"), 64, 64,null,0,1);
 		add(mMapObj);
 		
 		mMapSmallObj = new FlxTilemap();
-		mMapBack.loadMapFromCSV(Assets.getText("map/BigMap_Small Objects.csv"), Assets.getBitmapData("img/tilesheet_complete.png"), 64, 64,null,0,0);
+		mMapSmallObj.loadMapFromCSV(Assets.getText("map/BigMap_Small_Objects.csv"), Assets.getBitmapData("img/tilesheet_complete.png"), 64, 64,null,0,1);
 		add(mMapSmallObj);
+
+	}
+	
+	private function addMirko()
+	{
+		bullets = new FlxGroup();
+		add(bullets);
+		var weapon: Weapon = new Gun(bullets);
 		
+		mirko = new Mirko(100, 100, weapon);
+		add(mirko);
+		
+		GlobalGameData.instance.setPlayer(mirko);
+	}
+	
+	private function iniciateGroups()
+	{
 		vodkas = new FlxGroup();
 		add(vodkas);
 		bullets = new FlxGroup();
@@ -87,85 +131,98 @@ class GameState extends FlxState
 		add(enemyBullets);
 		enemiesHitboxes = new FlxGroup();
 		add(enemiesHitboxes);
-
-		weapon = new Gun(bullets);
-
-		mirko = new Mirko(100, 100, weapon);
-		add(mirko);
-		
-		GlobalGameData.instance.setPlayer(mirko);
-		
 		enemies = new FlxGroup();
 		add(enemies);
-		
 		freeWeapons = new FlxGroup();
 		add(freeWeapons);
-		
-		var freeWeapon:FreeWeapon = new FreeGun(200, 200);
-		freeWeapons.add(freeWeapon);
-		
-		var freeWeapon2:FreeWeapon = new FreeShotgun(300, 200);
-		freeWeapons.add(freeWeapon2);
-		
+	}
+	
+	private function setUI()
+	{
 		score = 0;
 		scoreLabel = new FlxText(FlxG.camera.x + 20, FlxG.camera.y + 20, 130, "Score: 0", 12);
-		hpLabel = new FlxText(FlxG.camera.x + 35, FlxG.camera.y + 35, 130, "HP: 10", 12);
+		hpLabel = new FlxText(FlxG.camera.x + 35, FlxG.camera.y + 35, 130, "HP: 5", 12);
+		zombiesAreComing = new FlxText(mirko.x, mirko.y,500, "", 20);
 		
 		add(scoreLabel);
 		add(hpLabel);
-		
-		time = 0;
-		
-		FlxG.camera.follow(mirko, FlxCameraFollowStyle.TOPDOWN);
-		FlxG.camera.setScrollBoundsRect(0, 0, mMapBack.width, mMapBack.height);
-		FlxG.worldBounds.set(0, 0, mMapBack.width, mMapBack.height);
-		
-		pathGenerator = new PathGenerator();
-		
-		//createGunEnemy();
-		
-		//createShotgunEnemy();
-		
-		createZombieEnemy();
-
-		
-		enemyEntryPoints = setEnemiesEntryPoints();
-		
-		killesToVodka = 5;
-		
-		//FlxG.sound.play(Assets.getText("sound/war_go_go_go.ogg"));
-		
-
-		
+		add(zombiesAreComing);
 		
 	}
-	override public function update(aDelta:Float):Void 
+	
+	private function createInitialEnemies()
 	{
-		super.update(aDelta);
-		time += aDelta;
-		if (time >= 2){
+		var enemiesPath:Array<Array<FlxPoint>> = enemiesLocationCreator.initialEnemies();
+		var i = 0;
+		for (path in enemiesPath)
+		{
+			var gun:Weapon;
+			var enemy:Enemy;
+			if(i<5 || i == 11 || i == 14 || i == 16 || i == 17 || i >= 18 && i < 24 ){
+				gun = new Gun(enemyBullets);
+				enemy = new PistolEnemy(path[0].x, path[0].y, gun, mMapWalls, path);
+				enemies.add(enemy);
+			}
+			if (i >= 5 && i < 11 || i == 12 || i==13 || i == 15 || i >= 24)
+			{
+				gun = new Shotgun(enemyBullets);
+				enemy = new PistolEnemy(path[0].x, path[0].y, gun, mMapWalls, path);
+				enemies.add(enemy);
+			}
 			
-			var aGun:Weapon = new Gun(enemyBullets);
-			var point = enemyEntryPoints[FlxG.random.int(0, 3)];
-			var enemy:Enemy = new PistolEnemy(point.x, point.y, aGun, mMapWalls, pathGenerator.demoPath());
-			//enemies.add(enemy);
-			//add(enemy);
-			time = 0;
+			i++;
 		}
+	}
+	
+	private function createInitialWeapons()
+	{
+		var freeShotgun:FreeWeapon = new FreeShotgun(tile(19), tile(18));
+		freeWeapons.add(freeShotgun);
+		var freeShotgun2:FreeWeapon = new FreeShotgun(tile(54), tile(12));
+		freeWeapons.add(freeShotgun2);
+		var freeShotgun3:FreeWeapon = new FreeShotgun(tile(95), tile(4));
+		freeWeapons.add(freeShotgun3);
+		var freeGun:FreeWeapon = new FreeGun(tile(86), tile(11));
+		freeWeapons.add(freeGun);
+	}
+	
+	private function createInitialVodka()
+	{
+		var vodka = new Vodka(tile(16) + 25, tile(18));
+		vodkas.add(vodka);
+		var vodka2 = new Vodka(tile(55) + 25, tile(16));
+		vodkas.add(vodka2);
+		var vodka3 = new Vodka(tile(86) + 25, tile(11));
+		vodkas.add(vodka3);
+		var vodka4 = new Vodka(tile(51) + 25, tile(48));
+		vodkas.add(vodka4);
+		var vodka5 = new Vodka(tile(18) + 25, tile(53));
+		vodkas.add(vodka5);
+		var vodka6 = new Vodka(tile(76) + 25, tile(40));
+		vodkas.add(vodka6);
+		var vodka7 = new Vodka(tile(52) + 25, tile(4));
+		vodkas.add(vodka7);
+	}
+	
+	private function tile(number:Int):Int
+	{
+		return number * 64;
+	}
+	
+	override public function update(elapsed:Float):Void 
+	{
+		super.update(elapsed);
 		
-		
-
+		time += elapsed;
+		setScore();
 		FlxG.collide(mirko, mMapWalls);
 		FlxG.collide(enemies, mMapWalls);
 		FlxG.collide(mirko, mMapObj);
 		FlxG.collide(mirko, mMapSmallObj);
 		FlxG.collide(enemies, mMapObj);
-		FlxG.collide(enemies, mMapSmallObj);
 
 		FlxG.collide(mMapWalls, bullets, wallsVsBullets);
 		FlxG.collide(mMapWalls, enemyBullets, wallsVsBullets);
-		FlxG.collide(mMapObj, bullets, wallsVsBullets);
-		FlxG.collide(mMapObj, enemyBullets, wallsVsBullets);
 		FlxG.collide(mMapSmallObj, bullets, wallsVsBullets);
 		FlxG.collide(mMapSmallObj, enemyBullets, wallsVsBullets); 
 		
@@ -176,6 +233,11 @@ class GameState extends FlxState
 		FlxG.overlap(mirko, freeWeapons, mirkoVsFreeWeapon);
 		FlxG.overlap(enemiesHitboxes, mirko, meleeVsMirko);
 		
+		checkForZombies();
+	}
+	
+	private function setScore()
+	{
 		score = GlobalGameData.instance.getScore();
 		scoreLabel.x = mirko.x;
 		scoreLabel.y = mirko.y - 30;
@@ -183,6 +245,31 @@ class GameState extends FlxState
 		hpLabel.x = mirko.x;
 		hpLabel.y = mirko.y - 50;
 		hpLabel.text = "HP: " + cast mirko.get_HP();
+		zombiesAreComing.x = mirko.x;
+		zombiesAreComing.y = mirko.y - 70;
+	}
+	
+	private function checkForZombies()
+	{
+		if (time > 3)
+		{
+			zombiesAreComing.text = "";
+		}
+		if (time > 30)
+		{
+			zombiesAreComing.text = "ZOMBIES ARE COMING!";
+			time = 0;
+			var zombiesLoc = enemiesLocationCreator.callTheZombies();
+			for (loc in zombiesLoc)
+			{
+				var grab:Weapon = new ZombieGrab(enemiesHitboxes);
+				var array = new Array<FlxPoint>();
+				array.push(loc);
+				var zombie:Enemy = new Zombie(loc.x, loc.y, grab, mMapWalls, array);
+				enemies.add(zombie);
+			}
+			
+		}
 	}
 	
 	private function wallsVsBullets(walls:FlxTilemap,aBullet:Bullet):Void
@@ -195,21 +282,6 @@ class GameState extends FlxState
 	{
 		aBullet.kill();
 		aEnemy.damage();
-		
-		killesToVodka -= 1;
-		if (killesToVodka == 0){
-			killesToVodka = 5;
-			var xPoints = FlxG.random.int(0, 1280);
-			var yPoints = FlxG.random.int(0, 720);
-			if (mMapWalls.getTile(Std.int(xPoints / 64), Std.int(yPoints / 64)) != -1 )
-			{
-				xPoints += 64;
-				yPoints += 64;
-			}
-			var vodka = new Vodka(xPoints, yPoints);
-			vodkas.add(vodka);
-		}
-		
 	}
 	
 	private function bulletVsMirko(aBullet:Bullet, aMirko:Mirko):Void
@@ -277,46 +349,5 @@ class GameState extends FlxState
 		FlxG.resetState();
 
 	}
-	
-	private function setEnemiesEntryPoints():Array<FlxPoint>
-	{
-		var points = new Array<FlxPoint>();
-		
-		var point1 = new FlxPoint( -10, -10);
-		var point2 = new FlxPoint( -10, mMapBack.height + 10);
-		var point3 = new FlxPoint( mMapBack.width + 10, -10);
-		var point4 = new FlxPoint(mMapBack.height + 10, mMapBack.width + 10);
-		
-		points.push(point1);
-		points.push(point2);
-		points.push(point3);
-		points.push(point4);
-		
-		return points;
-	}
-	
-	private function createGunEnemy(){
-		var aGun:Weapon = new Gun(enemyBullets);
-		var enemy:Enemy = new PistolEnemy(64 * 5 + 32, 64 * 6 + 32, aGun, mMapWalls, pathGenerator.demoPath());
-		enemies.add(enemy);
-		add(enemy);
-	}
-	
-	private function createZombieEnemy(){
-		var grab:Weapon = new ZombieGrab(enemiesHitboxes);
-		var zombie:Enemy = new Zombie(64 * 5 + 32, 64 * 8 + 32, grab, mMapWalls, pathGenerator.demoPath());
-		enemies.add(zombie);
-		add(zombie);
-	}
-	
-	private function createShotgunEnemy()
-	{
-		var shotgun:Weapon = new Shotgun(enemyBullets);
-		var shotgunEnemy:Enemy = new ShotgunEnemy(64 * 5 + 32, 64 * 8 + 32, shotgun, mMapWalls, pathGenerator.demoPath());
-		enemies.add(shotgunEnemy);
-		add(shotgunEnemy);
-	}
-	
-	
 	
 }

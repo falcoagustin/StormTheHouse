@@ -38,7 +38,7 @@ class MainMenu extends FlxState
 	}
 	private function startNewGame():Void
 	{
-		FlxG.switchState(new GameState());
+		FlxG.switchState(new MainGameState());
 	}
 	
 }
